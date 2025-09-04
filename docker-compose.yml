@@ -1,0 +1,35 @@
+services:
+
+  app:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: app_chat_container
+    ports:
+      - 80:80
+    env_file:
+      - .env
+    depends_on:
+      - chat_db
+    networks:
+      - chatNetwork
+    volumes:
+      - ./backend:/app
+
+  chat_db:
+    image: postgres:16-alpine
+    container_name: chat_db_container
+    env_file:
+      - .env
+    ports:
+      - 5432:5432
+    volumes:
+      - chatDbVolume:/var/lib/postgresql/data
+
+
+
+networks:
+  chatNetwork:
+
+volumes:
+  chatDbVolume:
