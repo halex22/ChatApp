@@ -11,7 +11,7 @@ class User(SQLModel, table=True):
     username: str = Field(gt=4)
     hashed_password: int = Field(ge=8)
 
-    messages = List['Message'] = Relationship(back_populates='user')
+    messages: List['Message'] = Relationship(back_populates='user')
 
 
 class Message(SQLModel, table=True):
