@@ -10,13 +10,13 @@ services:
     env_file:
       - .env
     depends_on:
-      - chat_db
+      - chat_serv
     networks:
       - chatNetwork
     volumes:
       - ./backend:/app
 
-  chat_db:
+  chat_serv:
     image: postgres:16-alpine
     container_name: chat_db_container
     env_file:

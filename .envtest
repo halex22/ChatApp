@@ -1,1 +1,1 @@
-connection_string:module//user:password@db_host:port/
+connection_string:module://user:password@db_host:port/

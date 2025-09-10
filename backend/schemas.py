@@ -10,5 +10,5 @@ class Credentials:
 
 @dataclass
 class PublicUser:
-    user_name: str = Field(min_length=4)
     id: int
+    user_name: str = Field(min_length=4)

@@ -33,7 +33,7 @@ app.add_middleware(
 async def sing_up(
     credentials: Credentials,
     db: AsyncSession = Depends(get_db)
-) -> HTTPException | Dict[str, str]:
+) -> Dict[str, str]:
     result = await db.execute(select(User).where(User.username == credentials.user_name))
     if result.scalar():
         return HTTPException(status_code=400, detail='Username already taken')
@@ -48,7 +48,7 @@ async def sing_up(
 async def sing_in(
     credentials: Credentials,
     db: AsyncSession = Depends(get_db)
-) -> HTTPException | Dict[str, str]:
+) -> Dict[str, str]:
     result = await db.execute(select(User).where(User.username == credentials.user_name))
     if not (user := result.scalar()):
         return HTTPException(status_code=400, detail='User not found')

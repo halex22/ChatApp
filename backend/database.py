@@ -5,6 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 DATABASE_URL = getenv('CONNECTION_STRING')
+print(DATABASE_URL)
 
 engine = create_async_engine(DATABASE_URL, echo=True)
 Base = declarative_base()
